@@ -94,7 +94,7 @@ step.
 Either:
 1. Open a new terminal. If you're using the department server, SSH to the server and get to the local 
 directory with your source code in it.
-1. Open a new shell. `screen` or `byobu` are helpful here.
+1. Open a new virtual shell. `screen`, `tmux` or `byobu` are helpful here.
 
 In this new shell run vcsend and pass that port number to it:
 
@@ -109,7 +109,23 @@ indicate that the server is on the same host as the client.
 Play around with these programs sending various strings back and forth. To close a connection, type just a 
 period by itself in vcsend. This will close both programs. 
 
+### Question 1
 
+> Is this a full duplex, half duplex or simplex communication? Explain.
 
-Rerun vcrec using the option to set the buffer size (e.g. "./vcrec 5 &"). Use large and then small values for the buffer size. Notice what happens when you use small values for the buffer size.
+Rerun vcrec using the option to set the buffer size (e.g. "./vcrec 5 &"). Use large and then small values for the buffer size. 
+Notice what happens when you use small values for the buffer size.
 
+### Question 2
+
+> Explain what is happening when the message is greater than the buffer size.
+
+## Part 2 - Half Duplex Communication
+
+Modify the code to allow a simple two-way communication by having the following interaction between the two programs: 
+
+1. vcsend asks the user for a string and sends it to vcrec
+1. vcrec echos the received string on screen
+1. vcrec asks the user for a string and sends it to vcsend
+1. vcsend echos the received string on screen
+1. Repeat steps 1-4 until the user enters a period by itself in either vcsend (step 1) or vcrec (step 3). When the user enters a period, close the connection and exit both vcrec and vcsend.
